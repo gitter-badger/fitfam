@@ -2,6 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-  <h1>Fitness is for humans.</h1>,
+  <h1>.</h1>,
   document.getElementById('root')
 );

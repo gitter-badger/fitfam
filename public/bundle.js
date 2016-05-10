@@ -59,7 +59,7 @@
 	_reactDom2.default.render(_react2.default.createElement(
 	  'h1',
 	  null,
-	  'Fitness is for humans.'
+	  '.'
 	), document.getElementById('root'));
 
 /***/ },
