@@ -54,13 +54,13 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _App = __webpack_require__(168);
+
+	var _App2 = _interopRequireDefault(_App);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(
-	  'h1',
-	  null,
-	  '.'
-	), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -20105,6 +20105,556 @@
 	var ReactMount = __webpack_require__(158);
 
 	module.exports = ReactMount.renderSubtreeIntoContainer;
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reflexbox = __webpack_require__(169);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var App = function App() {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'App' },
+	    _react2.default.createElement(
+	      _reflexbox.Flex,
+	      { align: 'center', justify: 'center', style: { backgroundColor: 'white' } },
+	      _react2.default.createElement(
+	        _reflexbox.Box,
+	        { p: 2 },
+	        _react2.default.createElement('img', { src: '/fitfam.png', alt: 'FITFAM', height: '18' })
+	      )
+	    )
+	  );
+	};
+
+	exports.default = App;
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _config = __webpack_require__(170);
+
+	Object.defineProperty(exports, 'config', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_config).default;
+	  }
+	});
+
+	var _Base = __webpack_require__(171);
+
+	Object.defineProperty(exports, 'Base', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_Base).default;
+	  }
+	});
+
+	var _Flex = __webpack_require__(174);
+
+	Object.defineProperty(exports, 'Flex', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_Flex).default;
+	  }
+	});
+
+	var _Box = __webpack_require__(175);
+
+	Object.defineProperty(exports, 'Box', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_Box).default;
+	  }
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ },
+/* 170 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var breakpoints = exports.breakpoints = {
+	  sm: '(min-width: 32em)',
+	  md: '(min-width: 48em)',
+	  lg: '(min-width: 64em)'
+	};
+
+	var scale = exports.scale = [0, 8, 16, 32, 64];
+
+	var config = {
+	  breakpoints: breakpoints,
+	  scale: scale
+	};
+
+	exports.default = config;
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _objectAssign = __webpack_require__(4);
+
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
+	var _config = __webpack_require__(170);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	var _margin = __webpack_require__(172);
+
+	var _margin2 = _interopRequireDefault(_margin);
+
+	var _padding = __webpack_require__(173);
+
+	var _padding2 = _interopRequireDefault(_padding);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	var Base = function Base(_ref, _ref2) {
+	  var style = _ref.style;
+	  var className = _ref.className;
+	  var is = _ref.is;
+	  var _style = _ref._style;
+	  var _className = _ref._className;
+
+	  var props = _objectWithoutProperties(_ref, ['style', 'className', 'is', '_style', '_className']);
+
+	  var reflexbox = _ref2.reflexbox;
+
+	  var _config$reflexbox = _extends({}, _config2.default, reflexbox);
+
+	  var scale = _config$reflexbox.scale;
+
+
+	  var sx = (0, _objectAssign2.default)({ boxSizing: 'border-box' }, style, _style, (0, _margin2.default)(props, scale), (0, _padding2.default)(props, scale));
+
+	  var cx = className ? _className + ' ' + className : _className;
+	  var Component = is || 'div';
+
+	  return _react2.default.createElement(Component, _extends({}, props, {
+	    style: sx,
+	    className: cx }));
+	};
+
+	Base.propTypes = {
+	  /** Passes in a custom element or component */
+	  is: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.object, _react2.default.PropTypes.func]),
+	  _className: _react2.default.PropTypes.string,
+	  _style: _react2.default.PropTypes.object,
+
+	  /** Sets padding based on a scale of 0–4 */
+	  m: _react2.default.PropTypes.number,
+	  /** Sets padding-left and padding-right based on a scale of 0–4 */
+	  mx: _react2.default.PropTypes.number,
+	  /** Sets margin-top and margin-bottom based on a scale of 0–4 */
+	  my: _react2.default.PropTypes.number,
+	  /** Sets margin-top based on a scale of 0–4 */
+	  mt: _react2.default.PropTypes.number,
+	  /** Sets margin-bottom based on a scale of 0–4 */
+	  mb: _react2.default.PropTypes.number,
+	  /** Sets margin-left based on a scale of 0–4 */
+	  ml: _react2.default.PropTypes.number,
+	  /** Sets margin-right based on a scale of 0–4 */
+	  mr: _react2.default.PropTypes.number,
+
+	  /** Sets negative left and right margins to compensate for child component padding */
+	  gutter: _react2.default.PropTypes.number,
+
+	  /** Sets padding based on a scale of 0–4 */
+	  p: _react2.default.PropTypes.number,
+	  /** Sets padding-left and padding-right based on a scale of 0–4 */
+	  px: _react2.default.PropTypes.number,
+	  /** Sets padding-top and padding-bottom based on a scale of 0–4 */
+	  py: _react2.default.PropTypes.number,
+	  /** Sets padding-top based on a scale of 0–4 */
+	  pt: _react2.default.PropTypes.number,
+	  /** Sets padding-bottom based on a scale of 0–4 */
+	  pb: _react2.default.PropTypes.number,
+	  /** Sets padding-left based on a scale of 0–4 */
+	  pl: _react2.default.PropTypes.number,
+	  /** Sets padding-right based on a scale of 0–4 */
+	  pr: _react2.default.PropTypes.number
+	};
+
+	Base.contextTypes = {
+	  reflexbox: _react2.default.PropTypes.shape({
+	    breakpoints: _react2.default.PropTypes.object,
+	    scale: _react2.default.PropTypes.array
+	  })
+	};
+
+	exports.default = Base;
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _objectAssign = __webpack_require__(4);
+
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	var a = function a(x) {
+	  return function (key) {
+	    return x === 'auto' ? _defineProperty({}, key, 'auto') : null;
+	  };
+	};
+
+	var n = function n(key, x, s, multiplier) {
+	  return typeof s[x] === 'number' ? _defineProperty({}, key, s[x] * (multiplier || 1)) : a(x)(key);
+	};
+
+	function margin(props, scale) {
+	  scale = scale || [];
+
+	  var _ref3 = props || {};
+
+	  var m = _ref3.m;
+	  var mx = _ref3.mx;
+	  var my = _ref3.my;
+	  var mt = _ref3.mt;
+	  var mr = _ref3.mr;
+	  var mb = _ref3.mb;
+	  var ml = _ref3.ml;
+	  var gutter = _ref3.gutter;
+
+
+	  var result = (0, _objectAssign2.default)({}, n('margin', m, scale), n('marginTop', mt, scale), n('marginBottom', mb, scale), n('marginTop', my, scale), n('marginBottom', my, scale), n('marginLeft', ml, scale), n('marginRight', mr, scale), n('marginLeft', mx, scale), n('marginRight', mx, scale), n('marginLeft', gutter, scale, -1), n('marginRight', gutter, scale, -1));
+
+	  return result;
+	}
+
+	exports.default = margin;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _objectAssign = __webpack_require__(4);
+
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	var n = function n(key, x, s) {
+	  return typeof x === 'number' ? _defineProperty({}, key, s[x]) : null;
+	};
+
+	function padding(props, scale) {
+	  scale = scale || [];
+
+	  var _ref2 = props || {};
+
+	  var p = _ref2.p;
+	  var px = _ref2.px;
+	  var py = _ref2.py;
+	  var pt = _ref2.pt;
+	  var pr = _ref2.pr;
+	  var pb = _ref2.pb;
+	  var pl = _ref2.pl;
+
+
+	  var result = (0, _objectAssign2.default)({}, n('padding', p, scale), n('paddingTop', pt, scale), n('paddingBottom', pb, scale), n('paddingTop', py, scale), n('paddingBottom', py, scale), n('paddingLeft', pl, scale), n('paddingRight', pr, scale), n('paddingLeft', px, scale), n('paddingRight', px, scale));
+
+	  return result;
+	}
+
+	exports.default = padding;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _objectAssign = __webpack_require__(4);
+
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
+	var _Base = __webpack_require__(171);
+
+	var _Base2 = _interopRequireDefault(_Base);
+
+	var _config = __webpack_require__(170);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	/**
+	 * Creates a flexbox context to control layout of children.
+	 */
+
+	var Flex = function Flex(_ref, _ref2) {
+	  var wrap = _ref.wrap;
+	  var column = _ref.column;
+	  var align = _ref.align;
+	  var justify = _ref.justify;
+	  var auto = _ref.auto;
+
+	  var props = _objectWithoutProperties(_ref, ['wrap', 'column', 'align', 'justify', 'auto']);
+
+	  var reflexbox = _ref2.reflexbox;
+
+
+	  var display = 'flex';
+
+	  var _config$reflexbox = _extends({}, _config2.default, reflexbox);
+
+	  var breakpoints = _config$reflexbox.breakpoints;
+
+
+	  if (typeof window !== 'undefined') {
+	    Object.keys(breakpoints).forEach(function (key) {
+	      if (Object.keys(props).indexOf(key) > -1) {
+	        display = 'block';
+	      }
+	    });
+	    Object.keys(breakpoints).forEach(function (key) {
+	      if (props[key] && window.matchMedia(breakpoints[key]).matches) {
+	        display = 'flex';
+	      }
+	    });
+	  }
+
+	  var sx = (0, _objectAssign2.default)(display ? { display: display } : null, wrap ? { flexWrap: 'wrap' } : null, column ? { flexDirection: 'column' } : null, auto ? { flex: '1 1 auto' } : null, align ? { alignItems: align } : null, justify ? { justifyContent: justify } : null);
+
+	  return _react2.default.createElement(_Base2.default, _extends({}, props, {
+	    _style: sx,
+	    _className: 'Flex' }));
+	};
+
+	Flex.propTypes = {
+	  /** Sets flex-wrap: wrap */
+	  wrap: _react2.default.PropTypes.bool,
+	  /** Sets flex-direction: column */
+	  column: _react2.default.PropTypes.bool,
+	  /** Sets negative left and right margins to compensate for <Box /> padding */
+	  gutter: _react2.default.PropTypes.number,
+	  /** Sets align-items */
+	  align: _react2.default.PropTypes.oneOf(['stretch', 'center', 'baseline', 'flex-start', 'flex-end']),
+	  /** Sets justify-content */
+	  justify: _react2.default.PropTypes.oneOf(['center', 'space-around', 'space-between', 'flex-start', 'flex-end']),
+	  /** Sets flex: 1 1 auto */
+	  auto: _react2.default.PropTypes.bool,
+	  /** Passes in a custom element or component */
+	  is: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.element, _react2.default.PropTypes.node])
+	};
+
+	Flex.contextTypes = {
+	  reflexbox: _react2.default.PropTypes.shape({
+	    breakpoints: _react2.default.PropTypes.object,
+	    scale: _react2.default.PropTypes.array
+	  })
+	};
+
+	exports.default = Flex;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _objectAssign = __webpack_require__(4);
+
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
+	var _Base = __webpack_require__(171);
+
+	var _Base2 = _interopRequireDefault(_Base);
+
+	var _config = __webpack_require__(170);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	var _margin = __webpack_require__(172);
+
+	var _margin2 = _interopRequireDefault(_margin);
+
+	var _padding = __webpack_require__(173);
+
+	var _padding2 = _interopRequireDefault(_padding);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	/**
+	 * Sets margin, padding, and width and works independently or as a child of <Flex />.
+	 */
+
+	var Box = function Box(_ref, _ref2) {
+	  var flex = _ref.flex;
+	  var auto = _ref.auto;
+	  var align = _ref.align;
+	  var order = _ref.order;
+	  var col = _ref.col;
+
+	  var props = _objectWithoutProperties(_ref, ['flex', 'auto', 'align', 'order', 'col']);
+
+	  var reflexbox = _ref2.reflexbox;
+
+	  var _config$reflexbox = _extends({}, _config2.default, reflexbox);
+
+	  var breakpoints = _config$reflexbox.breakpoints;
+	  var scale = _config$reflexbox.scale;
+
+
+	  function w(n) {
+	    return n ? n / 12 * 100 + '%' : null;
+	  }
+
+	  var width = w(col);
+
+	  if (typeof window !== 'undefined') {
+	    Object.keys(breakpoints).forEach(function (key) {
+	      if (props[key] && window.matchMedia(breakpoints[key]).matches) {
+	        width = w(props[key]) || width;
+	      }
+	    });
+	  }
+
+	  var sx = (0, _objectAssign2.default)({}, auto ? { flex: '1 1 auto' } : null, flex ? { display: 'flex' } : null, align ? { alignSelf: align } : null, order ? { order: order } : null, width ? { width: width } : null, width ? { flexBasis: width } : null);
+
+	  return _react2.default.createElement(_Base2.default, _extends({}, props, {
+	    _style: sx,
+	    _className: 'Box' }));
+	};
+
+	Box.propTypes = {
+	  /** Sets flex: 1 1 auto */
+	  auto: _react2.default.PropTypes.bool,
+	  /** Sets display: flex */
+	  flex: _react2.default.PropTypes.bool,
+	  /** Sets align-self */
+	  align: _react2.default.PropTypes.oneOf(['stretch', 'center', 'baseline', 'flex-start', 'flex-end']),
+	  /** Sets order */
+	  order: _react2.default.PropTypes.number,
+	  /** Sets width and flex-basis based on a 12 column grid */
+	  col: _react2.default.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+
+	  /** Passes in a custom element or component */
+	  is: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.element, _react2.default.PropTypes.node]),
+
+	  /** Sets padding based on a scale of 0–4 */
+	  m: _react2.default.PropTypes.number,
+	  /** Sets padding-left and padding-right based on a scale of 0–4 */
+	  mx: _react2.default.PropTypes.number,
+	  /** Sets margin-top and margin-bottom based on a scale of 0–4 */
+	  my: _react2.default.PropTypes.number,
+	  /** Sets margin-top based on a scale of 0–4 */
+	  mt: _react2.default.PropTypes.number,
+	  /** Sets margin-bottom based on a scale of 0–4 */
+	  mb: _react2.default.PropTypes.number,
+	  /** Sets margin-left based on a scale of 0–4 */
+	  ml: _react2.default.PropTypes.number,
+	  /** Sets margin-right based on a scale of 0–4 */
+	  mr: _react2.default.PropTypes.number,
+
+	  /** Sets padding based on a scale of 0–4 */
+	  p: _react2.default.PropTypes.number,
+	  /** Sets padding-left and padding-right based on a scale of 0–4 */
+	  px: _react2.default.PropTypes.number,
+	  /** Sets padding-top and padding-bottom based on a scale of 0–4 */
+	  py: _react2.default.PropTypes.number,
+	  /** Sets padding-top based on a scale of 0–4 */
+	  pt: _react2.default.PropTypes.number,
+	  /** Sets padding-bottom based on a scale of 0–4 */
+	  pb: _react2.default.PropTypes.number,
+	  /** Sets padding-left based on a scale of 0–4 */
+	  pl: _react2.default.PropTypes.number,
+	  /** Sets padding-right based on a scale of 0–4 */
+	  pr: _react2.default.PropTypes.number
+	};
+
+	Box.contextTypes = {
+	  reflexbox: _react2.default.PropTypes.shape({
+	    breakpoints: _react2.default.PropTypes.object,
+	    scale: _react2.default.PropTypes.array
+	  })
+	};
+
+	exports.default = Box;
 
 /***/ }
 /******/ ]);

@@ -8,6 +8,7 @@
     "webpack-watch": "webpack -w",
     "express-server": "node ./src/server",
     "dev": "concurrently --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
+    "deploy": "now",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,8 +33,10 @@
     "express": "^4.13.4",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
+    "rebass": "^0.2.6",
     "redis": "^2.6.0-2",
     "redis-commands": "^1.2.0",
+    "reflexbox": "^1.1.2",
     "then-redis": "^2.0.1",
     "webpack": "^1.13.0"
   },
